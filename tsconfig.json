@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2018",                                  
+    "module": "commonjs",
+    "allowJs": true,                                
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,       
+    "strictPropertyInitialization": false,
+    "strict": false,                                      
+    "skipLibCheck": true                                 
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
