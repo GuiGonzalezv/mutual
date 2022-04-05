@@ -19,7 +19,7 @@ export class CreditAccountUseCase {
         const account = await this.accountRepository.findByCpf(data.cpf)
 
         if (!account) {
-            throw new BadRequest("Account not found.")
+            throw new BadRequest("Account to be credited does not exist")
         }
 
         const movement = new Movement({
@@ -28,7 +28,7 @@ export class CreditAccountUseCase {
             value: data.value
         })
 
-        await this.movementRepository.creditAccount(movement)
+        await this.movementRepository.save(movement)
     }
 }
 
