@@ -19,7 +19,7 @@ export class CreateAccountUseCase {
 
         const account = new Account(data)
 
-        await this.accountRepository.save(account)
+        return await this.accountRepository.save(account)
     }
 }
 

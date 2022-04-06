@@ -10,4 +10,4 @@ const accountRepository = new AccountRepository()
 const creditAccountUseCase = new CreditAccountUseCase(movementRepository, accountRepository)
 const creditAccountController = new CreditAccountController(creditAccountUseCase, errorHandler)
 
-export {creditAccountController, creditAccountUseCase}
+export {creditAccountController}

@@ -12,4 +12,4 @@ const movementRepository = new MovementRepository()
 const getBalanceUseCase = new GetBalanceUseCase(movementRepository, accountRepository)
 const getBalanceController = new GetBalanceController(getBalanceUseCase, errorHandler)
 
-export {getBalanceController, getBalanceUseCase}
+export {getBalanceController}

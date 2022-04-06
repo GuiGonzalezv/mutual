@@ -36,7 +36,7 @@ export class DebitAccountUseCase {
             value: data.value
         })
 
-        await this.movementRepository.save(movement)
+        return await this.movementRepository.save(movement)
     }
 }
 

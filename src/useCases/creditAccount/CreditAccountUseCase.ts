@@ -15,7 +15,7 @@ export class CreditAccountUseCase {
         private accountRepository: AccountRepository
 
     ) {}
-    async execute(data: MovementAccountRequestDTO) {
+    async execute(data: MovementAccountRequestDTO) : Promise<Movement> {
         const account = await this.accountRepository.findByCpf(data.cpf)
 
         if (!account) {
@@ -28,7 +28,7 @@ export class CreditAccountUseCase {
             value: data.value
         })
 
-        await this.movementRepository.save(movement)
+        return await this.movementRepository.save(movement)
     }
 }
 

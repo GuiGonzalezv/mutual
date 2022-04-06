@@ -19,4 +19,4 @@ const creditAccountUseCase = new CreditAccountUseCase(movementRepository, accoun
 const transferBetweenAccountsUseCase = new TransferBetweenAccountsUseCase(debitAccountUseCase, creditAccountUseCase, accountRepository)
 const transferBetweenAccountsController = new TransferBetweenAccountsController(transferBetweenAccountsUseCase, errorHandler)
 
-export {transferBetweenAccountsController, transferBetweenAccountsUseCase}
+export {transferBetweenAccountsController}

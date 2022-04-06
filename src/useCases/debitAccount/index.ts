@@ -14,4 +14,4 @@ const getBalanceUseCase = new GetBalanceUseCase(movementRepository, accountRepos
 const debitAccountUseCase = new DebitAccountUseCase(movementRepository, accountRepository, getBalanceUseCase)
 const debitAccountController = new DebitAccountController(debitAccountUseCase, errorHandler)
 
-export {debitAccountController, debitAccountUseCase}
+export {debitAccountController}

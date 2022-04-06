@@ -9,7 +9,7 @@ export class AccountRepository implements IAccountRepository {
         return await AccountSchema.findOne({cpf})
     }
 
-    async save(data: Account) : Promise<void> {
+    async save(data: Account) : Promise<Account> {
         return await AccountSchema.create(data)
     }
 }

@@ -11,7 +11,7 @@ import {InternalServerError} from "http-errors"
 
 export class MovementRepository implements IMovementRepository {
 
-    async save(movement: Movement) : Promise<void> {
+    async save(movement: Movement) : Promise<Movement> {
         return await MovementSchema.create(movement)
     }
     async getDebits(account: Account): Promise<number> {
