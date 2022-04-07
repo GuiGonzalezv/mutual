@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "87631279-2542-497f-ad7b-9369e1c42caf",
+		"name": "Mutual",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Teste\",\n\t\"cpf\": \"37572238025\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}account",
+					"host": [
+						"{{address}}account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}account/balance/37572238025",
+					"host": [
+						"{{address}}account"
+					],
+					"path": [
+						"balance",
+						"37572238025"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Credit Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\" :\"37572238025\",\n    \"value\": 10000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}account/credit",
+					"host": [
+						"{{address}}account"
+					],
+					"path": [
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Debit Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\" :\"37572238025\",\n    \"value\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}account/debit",
+					"host": [
+						"{{address}}account"
+					],
+					"path": [
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Between Accounts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fromCpf\": \"37572238025\",\n\t\"toCpf\": \"12345678966\",\n\t\"value\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}transfer",
+					"host": [
+						"{{address}}transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "address",
+			"value": "localhost:3000/",
+			"type": "string"
+		}
+	]
+}
