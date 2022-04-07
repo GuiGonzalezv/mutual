@@ -4,9 +4,8 @@ export class Account {
     public name: string
     public created_at: Date
 
-    constructor(props: Omit<Account, "id" | "created_at">, id?: string, created_at?: Date) {
+    constructor(props: Omit<Account, "id" | "created_at">) {
         Object.assign(this, props)
-        if (id) this.id = id
-        if (!created_at) this.created_at = new Date()
+        if (!this.created_at) this.created_at = new Date()
     }
 }

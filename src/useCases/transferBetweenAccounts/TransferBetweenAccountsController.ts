@@ -15,7 +15,7 @@ export class TransferBetweenAccountsController {
 
         try {
             await this.transferBetweenAccountUseCase.execute({fromCpf, toCpf, value})
-            return response.status(201).send("Debit realized with success")
+            return response.status(201).send("Transfer carried out successfully")
         } catch (err) {
             await this.errorHandler.execute(response, err)
         }

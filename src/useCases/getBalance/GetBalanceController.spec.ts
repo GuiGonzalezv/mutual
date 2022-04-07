@@ -12,7 +12,7 @@ describe("Get balance Controller", () => {
             name: "Test Integration debit Account"
         })
 
-        const response = await request(app).get("/balance/78789836514").send()
+        const response = await request(app).get("/account/balance/78789836514").send()
 
 
         expect(response.status).toBe(200)
@@ -23,7 +23,7 @@ describe("Get balance Controller", () => {
 
     it("Should not able to get a balance of a nonexisting account", async() => {
         //Get balance of a nonexisting account
-        const response = await request(app).get("/balance/98719836514").send()
+        const response = await request(app).get("/account/balance/98719836514").send()
         expect(response.status).toBe(400)
         expect(response.text).toBe("Account not found.")
     })

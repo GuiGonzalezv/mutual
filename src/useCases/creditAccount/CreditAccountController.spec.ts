@@ -12,7 +12,7 @@ describe("Credit Account Controller", () => {
             name: "Test Integration Credit Account"
         })
 
-        const response = await request(app).post("/credit").send({
+        const response = await request(app).post("/account/credit").send({
             cpf: "98765432182",
             value: 1000
         })
@@ -23,7 +23,7 @@ describe("Credit Account Controller", () => {
 
     it("Should not be able to credit a account", async() => {
         const response = await request(app)
-            .post("/credit")
+            .post("/account/credit")
             .send({
                 cpf: "08265332782",
                 name: "Test Integration Account not found on credit"

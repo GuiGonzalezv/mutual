@@ -2,10 +2,13 @@ export class ErrorHandler {
 
     async execute(response, err) {
         if (err.name == "ValidationError") {
-            return response.status(400).send(`
-                Validation Error on field "${err.errors.value.path}",
-                expected "${err.errors.value.kind}" receive "${err.errors.value.valueType}"`
-            )
+            const arrayOfErrors = Object.keys(err.errors).map((validationError) => {
+                const info = err.errors[validationError]
+                return `Validation Error on field "${info.path}",
+                expected "${info.kind}" receive "${info.valueType}`
+            })
+
+            return response.status(400).send({errors: arrayOfErrors})
         }
         return response.status(err.status || 500).send(err.message || "Unexpected error")
     }

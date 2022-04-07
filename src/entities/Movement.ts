@@ -5,9 +5,8 @@ export class Movement {
     public value: number
     public created_at: Date
 
-    constructor(props: Omit<Movement, "id" | "created_at">, id?: string) {
+    constructor(props: Omit<Movement, "id" | "created_at">) {
         Object.assign(this, props)
-        if (id) this.id = id
-        this.created_at = new Date()
+        if (!this.created_at) this.created_at = new Date()
     }
 }

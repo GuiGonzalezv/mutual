@@ -14,6 +14,6 @@ const AccountSchema = new Schema({
         default: Date.now,
         required: true
     }
-})
+}, {strict: true, strictQuery: true})
 
 export default model("account", AccountSchema, "account")

@@ -12,12 +12,12 @@ describe("Debit Account Controller", () => {
             name: "Test Integration debit Account"
         })
 
-        await request(app).post("/credit").send({
+        await request(app).post("/account/credit").send({
             cpf: "03344455566",
             value: 1000
         })
 
-        const response = await request(app).post("/debit").send({
+        const response = await request(app).post("/account/debit").send({
             cpf: "03344455566",
             value: 500
         })
@@ -29,7 +29,7 @@ describe("Debit Account Controller", () => {
     it("Should not found account to debit", async() => {
         //Debit a nonexisting account
         const response = await request(app)
-            .post("/debit")
+            .post("/account/debit")
             .send({
                 cpf: "03344455577",
                 name: "Test Integration Account not found on debit"
@@ -46,7 +46,7 @@ describe("Debit Account Controller", () => {
             name: "Test Integration debit Account"
         })
 
-        const response = await request(app).post("/debit").send({
+        const response = await request(app).post("/account/debit").send({
             cpf: "01122233344",
             value: 1000
         })
