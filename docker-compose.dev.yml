@@ -8,6 +8,22 @@ services:
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017/
+      DB_HOST: mongodb
     ports:
-      - 3000:3000
+      - ${PORT}:${PORT}
     command: yarn dev
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${DB_PORT}:27017
