@@ -2,8 +2,8 @@ import express from "express"
 import cors from "cors"
 import {router} from "./routes"
 import mongoose from "mongoose"
-import "dotenv/config"
-
+import {config} from "dotenv"
+config()
 class App {
     public express: express.Application
 
