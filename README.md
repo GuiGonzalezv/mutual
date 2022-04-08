@@ -19,7 +19,7 @@ The technologies listed below were used in the project
 - By default our app runs on localhost on port 3000 (can be changed in .env file)
 - To access our api structure you can use the route below
 - - [Swagger (App must be running)](https://localhost:3000/swagger)
-- If you want to use postman, have a exported collection in the project root ('Mutual.postman_collection.json')
+- If you want to use postman, have a exported collection in the project root ('postman.json')
 
 ## :information_source: Clone Instructions
 ### API Configuration (running in dev mode)
