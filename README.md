@@ -22,6 +22,9 @@ The technologies listed below were used in the project
 - If you want to use postman, have a exported collection in the project root ('postman.json')
 
 ## :information_source: Clone Instructions
+
+##### If you need to build manually use `make build` for production environment or `make build-dev` for development environment
+
 ### API Configuration (running in dev mode)
 ```git
 $ git clone https://github.com/GuiGonzalezv/mutual.git
