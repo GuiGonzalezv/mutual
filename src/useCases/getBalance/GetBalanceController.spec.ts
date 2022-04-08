@@ -24,7 +24,7 @@ describe("Get balance Controller", () => {
     it("Should not able to get a balance of a nonexisting account", async() => {
         //Get balance of a nonexisting account
         const response = await request(app).get("/account/balance/98719836514").send()
-        expect(response.status).toBe(400)
+        expect(response.status).toBe(404)
         expect(response.text).toBe("Account not found.")
     })
 

@@ -1,5 +1,5 @@
 
-import {BadRequest} from "http-errors"
+import {BadRequest, NotFound} from "http-errors"
 import {Movement} from "../../entities/Movement"
 import MovementType from "../../enums/MovementTypeEnum"
 import {AccountRepository} from "../../repositories/implementations/AccountRepository"
@@ -19,7 +19,7 @@ export class CreditAccountUseCase {
         const account = await this.accountRepository.findByCpf(data.cpf)
 
         if (!account) {
-            throw new BadRequest("Account to be credited does not exist")
+            throw new NotFound("Account to be credited does not exist")
         }
 
         const movement = new Movement({

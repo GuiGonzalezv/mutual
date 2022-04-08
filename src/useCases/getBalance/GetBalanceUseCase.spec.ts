@@ -7,7 +7,7 @@ import {AccountRepository} from "../../repositories/implementations/AccountRepos
 import {MovementRepository} from "../../repositories/implementations/MovementRepository"
 import {CreateAccountUseCase} from "../createAccount/CreateAccountUseCase"
 import {GetBalanceUseCase} from "./GetBalanceUseCase"
-import {BadRequest} from "http-errors"
+import {NotFound} from "http-errors"
 
 
 describe("Get Balance of Account", () => {
@@ -42,7 +42,7 @@ describe("Get Balance of Account", () => {
 
     it("Should not get ballance of a nonexisting account", async() => {
         await expect(getBalanceUseCase.execute({cpf: "66655541422"}))
-            .rejects.toEqual(new BadRequest("Account not found."))
+            .rejects.toEqual(new NotFound("Account not found."))
     })
 
     afterAll(async() => {

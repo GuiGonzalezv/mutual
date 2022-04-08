@@ -1,4 +1,4 @@
-import {BadRequest} from "http-errors"
+import {BadRequest, NotFound} from "http-errors"
 import {AccountRepository} from "../../repositories/implementations/AccountRepository"
 import {MovementRepository} from "../../repositories/implementations/MovementRepository"
 import {GetBalanceRequestDTO} from "./GetBalanceDTO"
@@ -16,7 +16,7 @@ export class GetBalanceUseCase {
     async execute(data: GetBalanceRequestDTO) {
         const account = await this.accountRepository.findByCpf(data.cpf)
 
-        if (!account) throw new BadRequest("Account not found.")
+        if (!account) throw new NotFound("Account not found.")
 
         const debits = await this.movementRepository.getDebits(account)
         const credits = await this.movementRepository.getCredits(account)

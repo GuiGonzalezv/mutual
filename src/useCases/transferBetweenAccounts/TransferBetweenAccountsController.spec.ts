@@ -48,7 +48,7 @@ describe("Transfer Between Accounts", () => {
         })
 
         //Get balance of a nonexisting account
-        expect(response.status).toBe(400)
+        expect(response.status).toBe(404)
         expect(response.text).toBe("Account to be credited does not exist")
     })
 

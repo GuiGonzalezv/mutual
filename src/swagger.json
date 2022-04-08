@@ -1,0 +1,242 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Mutual Swagger Api",
+        "description": "Simple Swagger documentation for mutual api project",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "tags": [
+        {
+            "name": "Account",
+            "description": "API for accounts in the system"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/account": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Create a new account in system",
+                "requestBody": {
+                    "description": "Account Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Account"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Account created!"
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/account/balance/{cpf}": {
+            "parameters": [
+                {
+                    "name": "cpf",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the account that we want to match",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get Balance of a account",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Balance"
+                        }
+                    },
+                    "404": {
+                        "description": "Account not found."
+                    }
+                }
+            }
+        },
+        "/account/credit": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Credit an amount from the account",
+                "requestBody": {
+                    "description": "Movement object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Movement"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Credit realized with success"
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    },
+                    "404": {
+                        "description": "Account to be credited does not exist"
+                    }
+                }
+            }
+        },
+        "/account/debit": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Debit an amount from the account",
+                "requestBody": {
+                    "description": "Movement object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Movement"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Debit realized with success"
+                    },
+                    "400": {
+                        "description": "Insufficient balance to carry out this operation"
+                    },
+                    "404": {
+                        "description": "Account to be credited does not exist"
+                    }
+                }
+            }
+        },
+        "/transfer": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Transfers an amount from one account to another",
+                "requestBody": {
+                    "description": "Movement object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Transfer"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Transfer carried out successfully"
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    },
+                    "404": {
+                        "description": "Account to be credited does not exist"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "Account": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Balance": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "number"
+                }
+            }
+        },
+        "Movement": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        },
+        "Transfer": {
+            "type": "object",
+            "properties": {
+                "fromCpf": {
+                    "type": "string"
+                },
+                "toCpf": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

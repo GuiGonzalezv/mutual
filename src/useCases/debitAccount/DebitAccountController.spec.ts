@@ -35,7 +35,7 @@ describe("Debit Account Controller", () => {
                 name: "Test Integration Account not found on debit"
             })
 
-        expect(response.status).toBe(400)
+        expect(response.status).toBe(404)
         expect(response.text).toBe("Account to be debited does not exist")
     })
 

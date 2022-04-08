@@ -1,5 +1,5 @@
 
-import {BadRequest} from "http-errors"
+import {BadRequest, NotFound} from "http-errors"
 import {Movement} from "../../entities/Movement"
 import MovementType from "../../enums/MovementTypeEnum"
 import {AccountRepository} from "../../repositories/implementations/AccountRepository"
@@ -23,7 +23,7 @@ export class DebitAccountUseCase {
         const account = await this.accountRepository.findByCpf(data.cpf)
 
         if (!account) {
-            throw new BadRequest("Account to be debited does not exist")
+            throw new NotFound("Account to be debited does not exist")
         }
 
         const response = await this.getBalanceUseCase.execute({cpf: account.cpf})

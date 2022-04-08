@@ -2,7 +2,7 @@
  * @jest-environment ./src/database/mongo-environment-jest
 */
 
-import {BadRequest} from "http-errors"
+import {BadRequest, NotFound} from "http-errors"
 import mongoose from "mongoose"
 import MovementType from "../../enums/MovementTypeEnum"
 import {IAccountRepository} from "../../repositories/IAccountRepository"
@@ -65,7 +65,7 @@ describe("Debit Account", () => {
         }
 
         await expect(debitAccountUseCase.execute(movement))
-            .rejects.toEqual(new BadRequest("Account to be debited does not exist"))
+            .rejects.toEqual(new NotFound("Account to be debited does not exist"))
 
     })
 

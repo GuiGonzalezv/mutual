@@ -6,7 +6,7 @@ import mongoose from "mongoose"
 import {AccountRepository} from "../../repositories/implementations/AccountRepository"
 import {MovementRepository} from "../../repositories/implementations/MovementRepository"
 import {CreateAccountUseCase} from "../createAccount/CreateAccountUseCase"
-import {BadRequest} from "http-errors"
+import {NotFound} from "http-errors"
 import {CreditAccountUseCase} from "../creditAccount/CreditAccountUseCase"
 import {TransferBetweenAccountsUseCase} from "./TransferBetweenAccountsUseCase"
 import {DebitAccountUseCase} from "../debitAccount/DebitAccountUseCase"
@@ -66,7 +66,7 @@ describe("Get Balance of Account", () => {
 
     it("Should not get ballance of a nonexisting account", async() => {
         await expect(getBalanceUseCase.execute({cpf: "66655541422"}))
-            .rejects.toEqual(new BadRequest("Account not found."))
+            .rejects.toEqual(new NotFound("Account not found."))
     })
 
     afterAll(async() => {

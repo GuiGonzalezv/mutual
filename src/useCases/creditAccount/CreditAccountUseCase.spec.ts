@@ -2,7 +2,7 @@
  * @jest-environment ./src/database/mongo-environment-jest
 */
 
-import {BadRequest} from "http-errors"
+import {BadRequest, NotFound} from "http-errors"
 import mongoose from "mongoose"
 import MovementType from "../../enums/MovementTypeEnum"
 import {IAccountRepository} from "../../repositories/IAccountRepository"
@@ -57,7 +57,7 @@ describe("Credit account", () => {
         }
 
         await expect(creditAccountUseCase.execute({cpf: movement.cpf, value: movement.value}))
-            .rejects.toEqual(new BadRequest("Account to be credited does not exist"))
+            .rejects.toEqual(new NotFound("Account to be credited does not exist"))
 
     })
 
