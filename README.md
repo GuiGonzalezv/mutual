@@ -12,6 +12,7 @@ The technologies listed below were used in the project
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Yarn](https://yarnpkg.com/)
 - [Jest](https://jestjs.io/pt-BR/)
+- [Swagger](https://swagger.io/)
 
 
 ## :information_source: Important info
